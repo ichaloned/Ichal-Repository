@@ -1,4 +1,4 @@
 Alif Rahmawan Putra C++ Folder
 ===============================
 
-Put your code ini this folder.
+Put your source code ini this folder.
