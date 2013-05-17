@@ -18,10 +18,16 @@ Peraturan untuk team yang menggunakan repositoty :
        dan tuliskan pembenarannya.
 *   Agar menghargai kreasi / pembuatan / originalitas dari "source code" JANGAN meng-edit "source code" anggota team
     lain. Gunakan "Issues" menu untuk membantu mengatasi / membenarkan "source code" anggota team lain.
+    
+    
+Confirmed Team Member : 
+*   Faizal Ramadhan (Repository Owner)
+*   Alif Rahmawan Putra (Team Member)
+*   Septian Rizky Kurniawan Sandy (Team Member)
 
 
 Created by IchalOned
-©2013 Faizal Ramadhan | 125150300111028 | SISKOM | Angkatan 2012
+©2013 Faizal Ramadhan | Universitas Brawijaya | 125150300111028 | SISKOM | Angkatan 2012
 
 Please Respect the Team Member Originality
 
