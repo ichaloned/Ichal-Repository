@@ -7,7 +7,7 @@ Peraturan untuk umum :
 *   Boleh sharing source code disini, asalkan diberi link langsung ke repository ini, dilarang "mirror" source code dari sini.
 *   Gunakan credit / tanda kepemilikan source code jika ingin "mirror" source dari sini.
 
-Peraturan untuk team yang menggunakan repositoty :
+Peraturan untuk team yang menggunakan repository :
 *   Setiap team 'hanya' boleh mengedit source code yang ada didalam folder "Nama Anggota" masing-masing
 *   Jika ingin membantu anggota team yang lain, gunakan "Issues" menu, dengan cara :
     1. Debug / Test terlebih dahulu
