@@ -3,10 +3,8 @@ Ichal's Repository
 
 Peraturan untuk umum : 
 *   Repository ini dibuat untuk keperluan "Coding" dan keperluan penyelesaian tugas / matakuliah.
-*   Orang - orang hanya yang diijinkan saja yang boleh menambah, mengurangi, menghapus, maupun mengedit "Source Code"
-    yang ada disini.
-*   Boleh sharing source code disini, asalkan diberi link langsung ke repository ini, dilarang "mirror" source code
-    dari sini.
+*   Orang - orang hanya yang diijinkan saja yang boleh menambah, mengurangi, menghapus, maupun mengedit "Source Code" yang ada disini.
+*   Boleh sharing source code disini, asalkan diberi link langsung ke repository ini, dilarang "mirror" source code dari sini.
 *   Gunakan credit / tanda kepemilikan source code jika ingin "mirror" source dari sini.
 
 Peraturan untuk team yang menggunakan repositoty :
@@ -14,11 +12,9 @@ Peraturan untuk team yang menggunakan repositoty :
 *   Jika ingin membantu anggota team yang lain, gunakan "Issues" menu, dengan cara :
     1. Debug / Test terlebih dahulu
     2. Post / Tulis "bug" jika menemukan.
-    3. Jika mengetahui cara untuk membenarkan / fix kesalahan silahkan post di "line" berapa saja yang harus di fix
-       dan tuliskan pembenarannya.
-       **note : contoh bug dapat dilihat di "Issues" Menu**
-*   Agar menghargai kreasi / pembuatan / originalitas dari "source code" JANGAN meng-edit "source code" anggota team
-    lain. Gunakan "Issues" menu untuk membantu mengatasi / membenarkan "source code" anggota team lain.
+    3. Jika mengetahui cara untuk membenarkan / fix kesalahan silahkan post di "line" berapa saja yang harus di fix dan tuliskan pembenarannya.
+    **note : contoh bug dapat dilihat di "Issues" Menu**
+*   Agar menghargai kreasi / pembuatan / originalitas dari "source code" JANGAN meng-edit "source code" anggota team lain. Gunakan "Issues" menu untuk membantu mengatasi / membenarkan "source code" anggota team lain.
 *   Sisipkan nama jika ingin membuat / melaporkan "Issues".
     
     
