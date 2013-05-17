@@ -19,6 +19,7 @@ Peraturan untuk team yang menggunakan repositoty :
        **note : contoh bug dapat dilihat di "Issues" Menu**
 *   Agar menghargai kreasi / pembuatan / originalitas dari "source code" JANGAN meng-edit "source code" anggota team
     lain. Gunakan "Issues" menu untuk membantu mengatasi / membenarkan "source code" anggota team lain.
+*   Sisipkan nama jika ingin membuat / melaporkan "Issues".
     
     
 Confirmed Team Member : 
