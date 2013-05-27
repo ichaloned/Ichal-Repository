@@ -1,13 +1,12 @@
-//    GraphProject.cpp : Defines the entry point for the console application.
+//	GraphProject.cpp : Defines the entry point for the console application.
 //	function by Faizal Ramadhan
 //	©2013 Faizal Ramadhan | 125150300111028 | SISKOM-B | Angkatan 2012
 //	-------------------------------------------------------------------------------------------------------------
-//	Version 1.0 || Monday, 8.25 AM **  05/27/2013
-//	* Process 100% Functional :D
-//	* Using "check_up" function to cleaning the nested loop at "process" function
-//	* All Function Fixed
-//	* Can be Used only for 5 point / nodes / cities
-//	* Change Variable Declaration place, because "hi-size" variable can be messed up the variable below them
+//	Version 1.1 || Monday, 11.20 PM **  05/27/2013
+//	* Added "nest_print", now can used more than 5 cities / point / nodes
+//	* "z" variable (global) deleted, useless variable
+//	* change "global_loop" variable to declaration separator for "dot[]" and "max_input"
+//	* a Little fix :3
 //	-------------------------------------------------------------------------------------------------------------
 //  =============================================================================================================
 //	Change Logs :
@@ -29,22 +28,30 @@
 //	Version 0.9 [Beta] || Monday, 1:10 AM ** 05/27/2013
 //	* Process 90% Functional
 //	* Using Nested Loop for "BruteForce" Algorithm #NEW
+//	* Remove Linked List
 //	* Deleted all unnessersary variable, because older "BruteForce" Algorithm
 //	* Increase the dimension of array (default + 1), becausing can be messing up!
 //	* Source Code Now More Clean :3
 //	Version 0.9 [Beta] Build 2 (Version 0.9.2) || Monday, 11:38 AM ** 05/27/2013
 //	* TSP Algorithm Fixed, #distance still messed up#
 //	* Process now 95% Functional
+//	Version 1.0 || Monday, 8.25 PM **  05/27/2013
+//	* Process 100% Functional :D
+//	* Using "check_up" function to cleaning the nested loop at "process" function
+//	* All Function Fixed
+//	* Can be Used only for 5 point / nodes / cities
+//	* Change Variable Declaration place, because "hi-size" variable can be messed up the variable below them
 //	=============================================================================================================
 //	Known Bug :
 //	* Code still dirty, need clean up :3
+//	* variable "cur_value" messed up in start, but it is not a big problem
 //	* Unknown bugs, need a tester for find a bugs
 //  =============================================================================================================
 
 using namespace std;
 
 //	==== Libraries ====
-#include "stdafx.h"                                     // Needed for Visual Studion
+#include "stdafx.h"										// Needed for Visual Studio
 #include <iostream>;
 #include <stdio.h>;
 #include <conio.h>;
@@ -58,6 +65,7 @@ void process();											// Function Untuk mencari jalan tercepat ke semua poin
 void print();											// Function Menampilkan semua point dan distance dengan bentuk tabel
 void export_data();										// Function untuk memindahkan nilai "ex_" ke nilai asli
 void print_min();										// Function untuk menampilkan hasil TSP tercepat / terpendek
+void nest_print();										// Function untuk printing "Walking Point"
 void in_dot();											// Function untuk memindahkan "nest_arry" ke "dot[]"
 void in_value();										// Function untuk memproses nilai terkecil
 bool check_up();										// Function pengganti nested loop di "process()" function
@@ -66,17 +74,16 @@ bool check_up();										// Function pengganti nested loop di "process()" funct
 bool point[5][5];										// Variable Point
 bool pInput[5][5];										// Variable untuk melihat bahwa Variable "point" sudah terisi atau belum
 int cur_value = 0;										// Variable penyimpan jumlah jarak terpendek
-int dist[6][6];											// Variable Distance dari "point" ke "point"
+int dist[6][6];											// Variable Distance dari "point" ke "point" (note : dimension must -> max cities + 1)
 int nest_arry[5];										// Variable penyebut apakah point 'x' dan point 'y' sudah terlewati
 bool separator_var[5];									// Useless variable, untuk memisahkan deklarasi "nest_arry[]" dan "ex_value" agar tidak hancur
 int ex_value = 0;										// Variable penyimpan jumlah jarak sementara
 int dot[5];												// Variable penyimpan nodes / cities / point terpendek
-int global_loop = 1;									// Variable penghitung banyaknya "BruteForce" yang dilakukan
+int separator_var2 = 1;									// Useless variable, untuk memisahkan deklarasi "dot[]" dan "max_input" agar tidak hancur
 int max_input = 5;										// Variable untuk menyimpan banyaknya point yang ingin dimasukkan
-int z = 1;												// Variable -No Comment-
 //  =============================================================================================================
 
-void main(){                                            // Delete the "main" if you using Dev C++
+void main(){											// Detele "void" if using Dev C++
 	char pilih;
 	do{
 		system("cls");
@@ -241,6 +248,16 @@ void print_min(){
 	cout << "\nDengan jarak : " << cur_value << "\n";
 }
 
+void nest_print(){
+	int a = 1;
+	while(1){
+		cout << nest_arry[a] << "\t";
+		a = a + 1;
+		if(a > max_input){ break; }
+	}
+	cout << "\n";
+}
+
 bool check_up(){
 	int a = 1;
 	int b = 1;
@@ -278,7 +295,7 @@ void process(){
 		nest_arry[max_input] = nest_arry[max_input] + 1;
 		cout << "Walking Point : \n";
 		if(check_up() == 0){ export_data(); }
-		cout << nest_arry[1] << "\t" << nest_arry[2] << "\t" << nest_arry[3] << "\t" << nest_arry[4] << "\t" << nest_arry[5] << "\n";
+		nest_print();
 		print_min();
 		system("cls");
 		while(1){
@@ -293,7 +310,7 @@ void process(){
 		a = max_input;
 	}
 	cout << "Walking Point : \n";
-	cout << nest_arry[1] << "\t" << nest_arry[2] << "\t" << nest_arry[3] << "\t" << nest_arry[4] << "\t" << nest_arry[5] << "\n";
+	nest_print();
 	print_min();
 	system("pause");
 }
