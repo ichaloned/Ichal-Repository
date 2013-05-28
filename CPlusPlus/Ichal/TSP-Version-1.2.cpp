@@ -2,15 +2,12 @@
 //	function by Faizal Ramadhan
 //	©2013 Faizal Ramadhan | 125150300111028 | SISKOM-B | Angkatan 2012
 //	-------------------------------------------------------------------------------------------------------------
-//	Version 1.1 || Monday, 11.20 PM **  05/27/2013
-//	* Added "nest_print", now can used more than 5 cities / point / nodes
-//	* "z" variable (global) deleted, useless variable
-//	* change "global_loop" variable to declaration separator for "dot[]" and "max_input"
-//	* a Little fix :3
+//	Version 1.2 || Tuesday, 8.23 PM **  05/28/2013
+//	* Fixed "BruteForce" algorithm on process function, thats all :D
 //	-------------------------------------------------------------------------------------------------------------
 //  =============================================================================================================
 //	Change Logs :
-//  Version 0.1 [Beta]
+//	Version 0.1 [Beta]
 //	* Initial Release
 //	Version 0.2 [Beta]
 //	* Fix Manually Input, "Point" and "Distance" Input separated
@@ -41,6 +38,11 @@
 //	* All Function Fixed
 //	* Can be Used only for 5 point / nodes / cities
 //	* Change Variable Declaration place, because "hi-size" variable can be messed up the variable below them
+//	Version 1.1 || Monday, 11.20 PM **  05/27/2013
+//	* Added "nest_print", now can used more than 5 cities / point / nodes
+//	* "z" variable (global) deleted, useless variable
+//	* change "global_loop" variable to declaration separator for "dot[]" and "max_input"
+//	* a Little fix :3
 //	=============================================================================================================
 //	Known Bug :
 //	* Code still dirty, need clean up :3
@@ -51,7 +53,7 @@
 using namespace std;
 
 //	==== Libraries ====
-#include "stdafx.h"										// Needed for Visual Studio
+#include "stdafx.h"
 #include <iostream>;
 #include <stdio.h>;
 #include <conio.h>;
@@ -83,7 +85,7 @@ int separator_var2 = 1;									// Useless variable, untuk memisahkan deklarasi 
 int max_input = 5;										// Variable untuk menyimpan banyaknya point yang ingin dimasukkan
 //  =============================================================================================================
 
-void main(){											// Detele "void" if using Dev C++
+void main(){
 	char pilih;
 	do{
 		system("cls");
@@ -300,8 +302,8 @@ void process(){
 		system("cls");
 		while(1){
 			if(a < 2){ break; }
-			if(nest_arry[a] > max_input - 1){
-				if(nest_arry[1] > max_input){ break; }
+			if(nest_arry[a] > max_input || nest_arry[max_input] > max_input - 1){
+				if(nest_arry[1] > max_input ){ break; }
 				nest_arry[a-1] = nest_arry[a-1] + 1;
 				nest_arry[a] = 1;
 			}
