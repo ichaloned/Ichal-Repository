@@ -12,7 +12,7 @@
 //  =============================================================================================================
 //	Change Logs :
 //	Version 0.1 [Beta]
-//	* Initial Release
+//	* Initial Build
 //	Version 0.2 [Beta]
 //	* Fix Manually Input, "Point" and "Distance" Input separated
 //	* Delete Magic Input, Because Possibily All Point will be not connected
@@ -28,7 +28,7 @@
 //	* Silent Build, Trying Fixing the "BruteForce" Algorithm!
 //	Version 0.9 [Beta] || Monday, 1:10 AM ** 05/27/2013
 //	* Process 90% Functional
-//	* Using Nested Loop for "BruteForce" Algorithm #NEW
+//	* Using Nested Loop for "BruteForce" Algorithm
 //	* Remove Linked List
 //	* Deleted all unnessersary variable, because older "BruteForce" Algorithm
 //	* Increase the dimension of array (default + 1), becausing can be messing up!
@@ -54,6 +54,7 @@
 //	=============================================================================================================
 //	Known Bug :
 //	* Unknown bugs, need a tester for find a bugs
+//	* Currently only can be runned on the Visual Studio (DevC++ Not Supported, because "pow" syntax)
 //  =============================================================================================================
 
 using namespace std;
