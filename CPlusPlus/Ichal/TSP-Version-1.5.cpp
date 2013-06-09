@@ -2,8 +2,12 @@
 //	function by Faizal Ramadhan
 //	©2013 Faizal Ramadhan | 125150300111028 | SISKOM-B | Angkatan 2012
 //	-------------------------------------------------------------------------------------------------------------
-//	Version 1.2 || Tuesday, 8.23 PM **  05/28/2013
-//	* Fixed "BruteForce" algorithm on process function, thats all :D
+//	Version 1.5 || Monday, 12:10 AM ** 06/10/2013
+//	* "cur_value" at startup process function fixed
+//	* added buffer speed, current & estimate time of process function
+//	* new Function and Global variable added (to many)
+//	* added clock libraries for supporting calculate the time
+//	* and small fixed ...
 //	-------------------------------------------------------------------------------------------------------------
 //  =============================================================================================================
 //	Change Logs :
@@ -43,10 +47,12 @@
 //	* "z" variable (global) deleted, useless variable
 //	* change "global_loop" variable to declaration separator for "dot[]" and "max_input"
 //	* a Little fix :3
+//	Version 1.2 || Tuesday, 8.23 PM **  05/28/2013
+//	* Fixed "BruteForce" algorithm on process function, thats all :D
+//	Version 1.3 - Version 1.4
+//	* Silent Build
 //	=============================================================================================================
 //	Known Bug :
-//	* Code still dirty, need clean up :3
-//	* variable "cur_value" messed up in start, but it is not a big problem
 //	* Unknown bugs, need a tester for find a bugs
 //  =============================================================================================================
 
@@ -58,6 +64,7 @@ using namespace std;
 #include <stdio.h>;
 #include <conio.h>;
 #include <Windows.h>;
+#include <ctime>;
 
 
 //	===== Function =====
@@ -71,18 +78,32 @@ void nest_print();										// Function untuk printing "Walking Point"
 void in_dot();											// Function untuk memindahkan "nest_arry" ke "dot[]"
 void in_value();										// Function untuk memproses nilai terkecil
 bool check_up();										// Function pengganti nested loop di "process()" function
+void checkTime();										// Function untuk check buffer speed di kalikan dengan banyaknya loop(kemungkinan)
+void estimateTime();									// Function untuk mengkalkulasi berapa waktu yang dibutuhkan untuk process function
 
 //	===== Global Variable ====
+double currentTime;										// Variable yang akan di isi dengan waktu terbaru (print funtion)
+int curHours;											// Variable Hour(jam) #current
+int curMinute;											// Variable Minute(menit) #current
+int curSecond;											// Variable Second(detik) #current
+double startTime;										// Variable yang akan di isi dengan waktu awal process
+int hoursT;												// Variable Jam untuk "estimate process"
+int minuteT;											// Variable Menit untuk "estimate process"
+int secondT;											// Variable Detik untuk "estimate process"				
+double curTime = 0;										// Variable yang akan di isi dengan waktu terbaru (process function
+double nextTime = 0;									// Variable penghitung buffer speed (tergantung Processor CPU Speed & RAM)
+double realTime = 0;									// Variable nilai hasil kalkulasi perkiraan waktu process function (RAW)
 bool point[5][5];										// Variable Point
 bool pInput[5][5];										// Variable untuk melihat bahwa Variable "point" sudah terisi atau belum
 int cur_value = 0;										// Variable penyimpan jumlah jarak terpendek
 int dist[6][6];											// Variable Distance dari "point" ke "point" (note : dimension must -> max cities + 1)
-int nest_arry[5];										// Variable penyebut apakah point 'x' dan point 'y' sudah terlewati
+int nest_arry[5];										// Variable penyebut walking point
 bool separator_var[5];									// Useless variable, untuk memisahkan deklarasi "nest_arry[]" dan "ex_value" agar tidak hancur
 int ex_value = 0;										// Variable penyimpan jumlah jarak sementara
 int dot[5];												// Variable penyimpan nodes / cities / point terpendek
 int separator_var2 = 1;									// Useless variable, untuk memisahkan deklarasi "dot[]" dan "max_input" agar tidak hancur
 int max_input = 5;										// Variable untuk menyimpan banyaknya point yang ingin dimasukkan
+
 //  =============================================================================================================
 
 void main(){
@@ -247,7 +268,20 @@ void print_min(){
 		cout << dot[a] << " ";
 		a = a + 1;
 	}
-	cout << "\nDengan jarak : " << cur_value << "\n";
+	if(cur_value >= 65535){
+		cout << "\nDengan jarak : ? \n\n";
+	} else{
+		cout << "\nDengan jarak : " << cur_value << "\n\n";
+	}
+	cout << "Buffer Speed : " << nextTime << " milisecond\n";
+	cout << "Current Process Time  : ";
+	currentTime = clock() - startTime;
+	curSecond = currentTime/1000;
+	if(curSecond >= 60){ curSecond = 0; startTime = clock(); curMinute = curMinute + 1; }
+	if(curMinute >= 60){ curMinute = curMinute - 60; curHours = curHours + 1; }
+	cout << curHours << " : " << curMinute << " : " << curSecond << "\n";
+	cout << "Estimate Process Time : " << hoursT << " Jam, " << minuteT << " menit, " << secondT << " detik.\n";
+	cout << "Note : Estimate Process Time tergantung dari kecepatan komputer (Buffer Speed)\n";
 }
 
 void nest_print(){
@@ -289,10 +323,26 @@ bool check_up(){
 	}
 }
 
+void checkTime(){
+	realTime = nextTime * (pow(max_input, max_input)) + ((nextTime * (pow(max_input, max_input)))/3);
+}
+
+void estimateTime(){
+	hoursT = realTime/10000000;
+	minuteT = realTime/100000;
+	secondT = realTime/1000;
+	if(minuteT >= 60 || secondT >= 60){
+		while(minuteT >= 60){ minuteT = minuteT - 60; }
+		while(secondT >= 60){ secondT = secondT - 60; }
+	}
+}
+
 void process(){
+	startTime = clock();
 	int a = max_input;
 	int b = 1;
 	while(1){
+		curTime = clock();
 		if(nest_arry[1] > max_input){ break; }
 		nest_arry[max_input] = nest_arry[max_input] + 1;
 		cout << "Walking Point : \n";
@@ -310,12 +360,16 @@ void process(){
 			a = a - 1;
 		}
 		a = max_input;
+		nextTime = clock() - curTime;
+		checkTime();
+		if(nest_arry[a-2] == 1){ estimateTime(); }
 	}
 	cout << "Walking Point : \n";
 	nest_print();
 	print_min();
 	system("pause");
 }
+
 
 
 void export_data(){
